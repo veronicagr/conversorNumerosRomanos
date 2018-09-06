@@ -82,10 +82,9 @@ function returnsHundreds(num) {
 
 function returnsMilhar(num) {
     let million = parseInt((num % 10000) / 1000);
-    let unitary = parseInt((num % 1000) / 1000);
+    // let unitary = parseInt((num % 1000) / 1000);
 
-
-    return millharRoman[million]
+    return millharRoman[million];
 }
 
 function intToRoman(num) {
@@ -102,12 +101,11 @@ function intToRoman(num) {
     }
 
     return returnsMilhar(num) + returnsHundreds(num) + returnsDozens(num);
-};
-
+}
 
 function romanToInt(str) {
 
-    if (typeof str !== 'string' || str === " ") {
+    if (typeof str !== "string" || str === " ") {
         return "Digite uma letra correspondente a números romanos";
     }
 
@@ -120,12 +118,11 @@ function romanToInt(str) {
     for (var i = 0; i <= decimal.length; i++) {
         while (str.indexOf(roman[i]) === 0) {
             result += decimal[i];
-            str = str.replace(roman[i], '');
+            str = str.replace(roman[i], "");
         }
-
     }
     return result;
-};
+}
 
 
 module.exports = { intToRoman, romanToInt };
