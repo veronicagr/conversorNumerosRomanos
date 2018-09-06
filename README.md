@@ -1,8 +1,10 @@
 # Conversor de números v.1.0.0
-Esta biblioteca se destina à conversão de inteiros em romanos e vice-versa, para uso em aplicações web. Na versão atual é capaz de converter números de 0 a 5000 para seus equivalentes em romanos e de romanos para inteiros, com letras Maiúsculas  .
+Esta biblioteca destina-se à conversão de inteiros em romanos e vice-versa.
+Utilização em aplicações web.
+Na versão atual é capaz de converter números de 0 a 5000 para seus equivalentes em romanos e de romanos para inteiros, com letras Maiúsculas  .
 
 # Os métodos utilizados na biblioteca são:
-returnsWritten(num);
+intToRoman(num);
 Exemplo de uso:
 
 $node

@@ -68,4 +68,8 @@ describe('romanToInt()', function () {
     it('Deveria retornar 2000 em inteiros', () => {
         assert.equal(romanToInt('MM'), 2000);
     });
+
+    it('Quando digitado letras minúsculas, deverá retornar: Digite letras maiúsculas', () => {
+        assert.equal(romanToInt('mm'), "Digite letras maiúsculas");
+    });
 });
