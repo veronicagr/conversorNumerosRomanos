@@ -1,4 +1,4 @@
-const hundreds = {
+const hundredsRoman = {
     0: "",
     1: "C",
     2: "CC",
@@ -11,7 +11,7 @@ const hundreds = {
     9: "CM",
 };
 
-const unitaries = {
+const unitariesRoman = {
     0: "",
     1: "I",
     2: "II",
@@ -24,7 +24,7 @@ const unitaries = {
     9: "IX"
 };
 
-const dozens = {
+const dozensRoman = {
     0: "",
     1: "X",
     2: "XX",
@@ -37,7 +37,7 @@ const dozens = {
     9: "XC",
 };
 
-const elevenToNineteen = {
+const elevenToNineteenRoman = {
     0: "",
     11: "XI",
     12: "XII",
@@ -50,7 +50,7 @@ const elevenToNineteen = {
     19: "XIX",
 };
 
-const milteste = {
+const millharRoman = {
     0: "",
     1: "M",
     2: "MM",
@@ -65,25 +65,27 @@ function returnsDozens(num) {
     let dozen = parseInt(number % 100 / 10);
 
     if (number >= 1 && number <= 9) {
-        return unitaries[number];
+        return unitariesRoman[number];
     }
 
     if (number >= 11 && number <= 19) {
-        return elevenToNineteen[number];
+        return elevenToNineteenRoman[number];
     }
-    return dozens[dozen] + unitaries[unitary];
-}
-function returnsHundreds(num) {
-    let hundred = parseInt(num % 1000 / 100);
-    return hundreds[hundred];
+
+    return dozensRoman[dozen] + unitariesRoman[unitary];
 }
 
-function returnsMillion(num) {
-    let million = parseInt(num % 10000 / 1000);
+function returnsHundreds(num) {
+    let hundred = parseInt(num % 1000 / 100);
+    return hundredsRoman[hundred];
+}
+
+function returnsMilhar(num) {
+    let million = parseInt((num % 10000) / 1000);
     let unitary = parseInt((num % 1000) / 1000);
 
 
-    return milteste[million]
+    return millharRoman[million]
 }
 
 function intToRoman(num) {
@@ -99,6 +101,32 @@ function intToRoman(num) {
         return "Não convertemos acima de 5000 em romanos";
     }
 
-    return returnsMillion(num) + returnsHundreds(num) + returnsDozens(num);
-}
-module.exports = intToRoman;
+    return returnsMilhar(num) + returnsHundreds(num) + returnsDozens(num);
+};
+
+
+function romanToInt(str) {
+
+    if (typeof str !== 'string' || str === " ") {
+        return "Digite uma letra correspondente a números romanos";
+    }
+
+
+    var result = 0;
+
+    var decimal = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+    var roman = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+
+    for (var i = 0; i <= decimal.length; i++) {
+        while (str.indexOf(roman[i]) === 0) {
+            result += decimal[i];
+            str = str.replace(roman[i], '');
+        }
+
+    }
+    return result;
+};
+
+
+module.exports = { intToRoman, romanToInt };
+
