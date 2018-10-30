@@ -108,7 +108,7 @@ function romanToInt(str) {
         return "Digite uma letra correspondente a números romanos";
     }
     if (str === str.toLowerCase()) {
-        return "Digite letras maiúsculas"
+        return "Digite letras maiúsculas";
     }
 
     let resultado = 0;
